@@ -1,4 +1,5 @@
 import { APIRequestContext } from "@playwright/test";
+import Base_URL from "../playwright.config";
 
 let cachedToken: string | null = null;
 let tokenGenerationTime: Date | null = null;
@@ -6,9 +7,7 @@ let tokenGenerationTime: Date | null = null;
 async function fetchChallengerToken(
   request: APIRequestContext
 ): Promise<string> {
-  const response = await request.post(
-    "https://apichallenges.herokuapp.com/challenger"
-  );
+  const response = await request.post(`${Base_URL}/challenger`);
 
   if (!response.ok()) {
     throw new Error("Failed to fetch X-CHALLENGER token");
@@ -16,7 +15,6 @@ async function fetchChallengerToken(
   const token = response.headers()["x-challenger"];
   cachedToken = token;
   tokenGenerationTime = new Date();
-  console.log(token);
   return token;
 }
 
@@ -36,7 +34,6 @@ export async function requestWithHeader(
   url: string,
   options?: any
 ) {
-  console.log(isTokenValid());
   if (!isTokenValid()) {
     await fetchChallengerToken(request);
   }

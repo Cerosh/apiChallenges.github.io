@@ -2,9 +2,7 @@ import { expect, test } from "./base";
 import { createBasicAuthHeader } from "../utils/auth";
 
 test("GET Authorized (Bearer)", async ({ requestWithHeader }) => {
-  const username = "admin";
-  const password = "password";
-  const authHeader = createBasicAuthHeader(username, password);
+  const authHeader = createBasicAuthHeader("admin");
   const response = await requestWithHeader("post", "./secret/token", {
     headers: {
       Authorization: authHeader,
