@@ -3,7 +3,7 @@
 - Centralized Header Management: The fixture feature allows for defining shared headers in a single location, which are then applied across all relevant API requests. This centralization simplifies the codebase and ensures consistency in header management throughout the test suite.
 - Reduced Code Duplication: We have significantly reduced code duplication by moving header logic to a base file. This streamlining results in cleaner, more maintainable code, and reduces the risk of errors associated with manually updating headers in multiple places.
 - Improved Maintainability: Any changes to header configurations can now be made in one place, facilitating more accessible updates and ensuring that all test cases reflect the latest header requirements without requiring individual modifications.
-- Enhanced Readability: With common functionality abstracted into fixtures, the test scripts focus more on the specific test logic, enhancing overall readability and making it easier for developers to understand and extend the test cases.
+- Enhanced Readability: With common functionality abstracted into fixtures, the test scripts focus more on the specific test logic, enhancing overall readability and making it easier for developers to understand and extend the test cases.<br>
 **Limitations**
 Credentials: The test scripts hardcode authentication credentials, posing a security risk and reducing flexibility.
 - URLs: Endpoints and URLs are hardcoded, making the framework less adaptable to changes in the API environment or testing different environments.
