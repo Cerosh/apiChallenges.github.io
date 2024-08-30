@@ -18,6 +18,14 @@ This is a collection of exercises for API testing using Playwright. Special atte
 Credentials: The test scripts hardcode authentication credentials, posing a security risk and reducing flexibility.
 - URLs: Endpoints and URLs are hardcoded, making the framework less adaptable to changes in the API environment or testing different environments.
 - Repetitive Code: Repetitive code structures are present, leading to maintenance challenges and potential test inconsistencies.
+
+<table>
+  <tr>
+    <td>Main</td>
+    <td><a href="https://github.com/Cerosh/apiChallenges.github.io/tree/level.1">Level 1</a></td>
+    <td><a href="https://github.com/Cerosh/apiChallenges.github.io/tree/level.2">Level 2</a></td>
+  </tr>
+</table>
 #
 All the exercises I have used are the challenges that  Alan Richardson created. He owns the demo application used to test the API. I want to thank him from the bottom of my heart for his efforts in creating these challenges and hosting this site free of cost for all new learners.
 https://www.eviltester.com/page/tools/apichallenges/<br>
