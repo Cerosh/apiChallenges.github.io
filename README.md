@@ -1,4 +1,6 @@
 # apiChallenges.github.io
+All the exercises I have used are the challenges that  Alan Richardson created. He owns the demo application used to test the API. I want to thank him from the bottom of my heart for his efforts in creating these challenges and hosting this site free of cost for all new learners.
+https://www.eviltester.com/page/tools/apichallenges/
 **Features**
 - Comprehensive API Testing:
   - GET Requests: Validate retrieval of data from endpoints.
@@ -14,6 +16,6 @@
   - Different Data Types: Test APIs with various data formats (e.g., JSON, XML).
     
 **Limitations**
-- Credentials: Credentials for authentication are hardcoded into the test scripts, posing a security risk and reducing flexibility.
+Credentials: The test scripts hardcode authentication credentials, posing a security risk and reducing flexibility.
 - URLs: Endpoints and URLs are hardcoded, making the framework less adaptable to changes in the API environment or testing different environments.
-- Repetitive Code: Repetitive code structures are present, leading to maintenance challenges and potential inconsistencies across tests.
+- Repetitive Code: Repetitive code structures are present, leading to maintenance challenges and potential test inconsistencies.
