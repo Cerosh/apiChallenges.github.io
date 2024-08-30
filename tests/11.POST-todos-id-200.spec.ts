@@ -1,20 +1,14 @@
-import { expect, test } from "@playwright/test";
+import { expect, test } from "./base";
 import { todoGenerator } from "../utils/todo";
 
-test("POST /todos/id (200)", async ({ request }) => {
-  const response = await request.post("./todos", {
-    headers: {
-      "X-CHALLENGER": "8d7990f8-61da-4146-abde-b42bad1daac9",
-    },
+test("POST /todos/id (200)", async ({ requestWithHeader }) => {
+  const response = await requestWithHeader("post", "./todos", {
     data: todoGenerator.generateTodo(),
   });
   const todoResponse: todoGenerator.Todo = await response.json();
   const { id, title } = todoResponse;
   const updatedTitle = `${title}-UPDATED`;
-  const updatedResponse = await request.post(`./todos/${id}`, {
-    headers: {
-      "X-CHALLENGER": "8d7990f8-61da-4146-abde-b42bad1daac9",
-    },
+  const updatedResponse = await requestWithHeader("post", `./todos/${id}`, {
     data: {
       title: updatedTitle,
     },

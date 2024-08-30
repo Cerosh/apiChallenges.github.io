@@ -1,13 +1,12 @@
-import { expect, test } from "@playwright/test";
+import { expect, test } from "./base";
 import { createBasicAuthHeader } from "../utils/auth";
 
-test("POST Authentication (401)", async ({ request }) => {
+test("POST Authentication (401)", async ({ requestWithHeader }) => {
   const username = "Admin1";
   const password = "Pa55word";
   const authHeader = createBasicAuthHeader(username, password);
-  const response = await request.post("./secret/token", {
+  const response = await requestWithHeader("post", "./secret/token", {
     headers: {
-      "X-CHALLENGER": "8d7990f8-61da-4146-abde-b42bad1daac9",
       Authorization: authHeader,
     },
   });

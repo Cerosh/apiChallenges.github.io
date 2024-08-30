@@ -1,10 +1,6 @@
-import { expect, test } from "@playwright/test";
+import { expect, test } from "./base";
 
-test("GET Unauthorized  (401)", async ({ request }) => {
-  const response = await request.get("./secret/note", {
-    headers: {
-      "X-CHALLENGER": "8d7990f8-61da-4146-abde-b42bad1daac9",
-    },
-  });
+test("GET Unauthorized  (401)", async ({ requestWithHeader }) => {
+  const response = await requestWithHeader("get", "./secret/note");
   expect(response.status()).toBe(401);
 });

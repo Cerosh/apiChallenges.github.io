@@ -1,10 +1,6 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./base";
 
-test("GET /todo (404) not plural", async ({ request }) => {
-  const response = await request.get("./todo", {
-    headers: {
-      "X-CHALLENGER": "8d7990f8-61da-4146-abde-b42bad1daac9",
-    },
-  });
+test("GET /todo (404) not plural", async ({ requestWithHeader }) => {
+  const response = await requestWithHeader("get", "./todo");
   expect(response.status()).toBe(404);
 });
