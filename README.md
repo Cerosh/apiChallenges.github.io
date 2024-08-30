@@ -6,7 +6,7 @@
 - Enhanced Readability: With common functionality abstracted into fixtures, the test scripts focus more on the specific test logic, enhancing overall readability and making it easier for developers to understand and extend the test cases.<br>
 
 **Limitations**<br>
-Credentials: The test scripts hardcode authentication credentials, posing a security risk and reducing flexibility.
+- Credentials: The test scripts hardcode authentication credentials, posing a security risk and reducing flexibility.
 - URLs: Endpoints and URLs are hardcoded, making the framework less adaptable to changes in the API environment or testing different environments.
 
 <table>
