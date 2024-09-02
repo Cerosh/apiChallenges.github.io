@@ -13,6 +13,8 @@
   },
   "dependencies": {
     "@faker-js/faker": "^8.4.1",
+    "dotenv": "^16.4.5",
+    "path": "^0.12.7",
     "xmlbuilder": "^15.1.1"
   }
 }

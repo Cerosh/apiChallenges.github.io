@@ -1,5 +1,5 @@
 import { APIRequestContext } from "@playwright/test";
-import Base_URL from "../playwright.config";
+import config from "../playwright.config";
 
 let cachedToken: string | null = null;
 let tokenGenerationTime: Date | null = null;
@@ -7,7 +7,8 @@ let tokenGenerationTime: Date | null = null;
 async function fetchChallengerToken(
   request: APIRequestContext
 ): Promise<string> {
-  const response = await request.post(`${Base_URL}/challenger`);
+  const baseURL = config.use?.baseURL;
+  const response = await request.post(`${baseURL}/challenger`);
 
   if (!response.ok()) {
     throw new Error("Failed to fetch X-CHALLENGER token");
