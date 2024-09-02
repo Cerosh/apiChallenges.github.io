@@ -6,6 +6,8 @@ jobs:
   test:
     timeout-minutes: 60
     runs-on: ubuntu-latest
+    env:
+      ADMIN_USER_PASSWORD: ${{vars.BASE_URL}}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
