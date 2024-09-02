@@ -25,3 +25,21 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 30
+      - name: Setup pages
+        uses: actions/configure-pages@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: playwright-report/
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Set URL
+        id: set-url
+        run: |
+          REPO_OWNER=$(echo "${{github.repository}}" | cut -d'/' -f1)
+          REPO_PATH=$(echo "${{github.repository}}" | cut -d'/' -f2)
+          echo "REPO_OWNER=$REPO_OWNER"
+          URL="https://$REPO_OWNER.github.io/$REPO_URL"
+          URL_Page="https://${{github.repository_owner}}.github.io/$REPO_PATH"
+          echo "URL=$URL_Page"
