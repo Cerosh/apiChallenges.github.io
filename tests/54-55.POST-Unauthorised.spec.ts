@@ -1,14 +1,21 @@
 import { expect, test } from "./base";
 test.describe("POST Unauthorised", () => {
-  test("35.remove the X-AUTH-TOKEN header", async ({ requestWithHeader }) => {
+  test("54.remove the X-AUTH-TOKEN header", async ({
+    requestWithHeader,
+    assertHelper,
+  }, testInfo) => {
     const noteResponse = await requestWithHeader("post", "./secret/note", {
       data: {
         note: "Playwright is good for api testing",
       },
     });
     expect(noteResponse.status()).toBe(401);
+    await assertHelper.expectTheApiChallenge(testInfo.title);
   });
-  test("36.Invalid AUTH TOKEN header", async ({ requestWithHeader }) => {
+  test("55.Invalid AUTH TOKEN header", async ({
+    requestWithHeader,
+    assertHelper,
+  }, testInfo) => {
     const noteResponse = await requestWithHeader("post", "./secret/note", {
       headers: {
         "X-AUTH-TOKEN": "playwright",
@@ -18,5 +25,6 @@ test.describe("POST Unauthorised", () => {
       },
     });
     expect(noteResponse.status()).toBe(403);
+    await assertHelper.expectTheApiChallenge(testInfo.title);
   });
 });

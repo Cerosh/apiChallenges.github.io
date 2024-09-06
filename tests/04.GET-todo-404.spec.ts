@@ -1,6 +1,10 @@
 import { test, expect } from "./base";
 
-test("GET /todo (404) not plural", async ({ requestWithHeader }) => {
+test("04.GET /todo (404) not plural", async ({
+  requestWithHeader,
+  assertHelper,
+}, testInfo) => {
   const response = await requestWithHeader("get", "./todo");
   expect(response.status()).toBe(404);
+  await assertHelper.expectTheApiChallenge(testInfo.title);
 });

@@ -1,6 +1,9 @@
 import { test, expect } from "./base";
 
-test("GET /todos (200) XML Preferred ", async ({ requestWithHeader }) => {
+test("28.GET /todos (200) XML Preferred ", async ({
+  requestWithHeader,
+  assertHelper,
+}, testInfo) => {
   const response = await requestWithHeader("get", "./todos", {
     headers: {
       Accept: "application/xml,application/json",
@@ -9,4 +12,5 @@ test("GET /todos (200) XML Preferred ", async ({ requestWithHeader }) => {
   const headers = response.headers();
   await expect(response).toBeOK();
   expect(headers["content-type"]).toContain("application/xml");
+  await assertHelper.expectTheApiChallenge(testInfo.title);
 });

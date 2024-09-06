@@ -9,7 +9,10 @@ interface Todo {
 interface TodosResponse {
   todos: Todo[];
 }
-test("GET /todos/{id} (200)", async ({ requestWithHeader }) => {
+test("05.GET /todos/{id} (200)", async ({
+  requestWithHeader,
+  assertHelper,
+}, testInfo) => {
   const response = await requestWithHeader("get", "./todos");
   const data: TodosResponse = await response.json();
   const todos = data.todos;
@@ -22,4 +25,5 @@ test("GET /todos/{id} (200)", async ({ requestWithHeader }) => {
     `./todos/${todos[randomIndex].id}`
   );
   await expect(todoResponse).toBeOK();
+  await assertHelper.expectTheApiChallenge(testInfo.title);
 });

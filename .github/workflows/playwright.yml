@@ -7,7 +7,7 @@ permissions:
   pages: write
   id-token: write
 jobs:
-  test:
+  API_Challenges_Level_3:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     env:

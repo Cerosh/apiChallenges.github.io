@@ -1,7 +1,10 @@
 import { expect, test } from "./base";
 import { createBasicAuthHeader } from "../utils/auth";
 
-test("GET Authorized (200)", async ({ requestWithHeader }) => {
+test("56.GET Authorized (Bearer)", async ({
+  requestWithHeader,
+  assertHelper,
+}, testInfo) => {
   const authHeader = createBasicAuthHeader("admin");
   const response = await requestWithHeader("post", "./secret/token", {
     headers: {
@@ -12,8 +15,9 @@ test("GET Authorized (200)", async ({ requestWithHeader }) => {
   const xAuthToken = headers["x-auth-token"];
   const noteResponse = await requestWithHeader("get", "./secret/note", {
     headers: {
-      "X-AUTH-TOKEN": xAuthToken,
+      Authorization: `Bearer ${xAuthToken}`,
     },
   });
   expect(noteResponse).toBeOK();
+  await assertHelper.expectTheApiChallenge(testInfo.title);
 });

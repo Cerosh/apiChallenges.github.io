@@ -1,7 +1,10 @@
 import { expect, test } from "./base";
 import { todoGenerator } from "../utils/todo";
 
-test("POST /todos/id (200)", async ({ requestWithHeader }) => {
+test("17.POST /todos/id (200)", async ({
+  requestWithHeader,
+  assertHelper,
+}, testInfo) => {
   const response = await requestWithHeader("post", "./todos", {
     data: todoGenerator.generateTodo(),
   });
@@ -17,4 +20,5 @@ test("POST /todos/id (200)", async ({ requestWithHeader }) => {
   const { title: updatedTitleFromResponse } = updatedResponseJson;
   await expect(updatedResponse).toBeOK();
   expect(updatedTitleFromResponse).toBe(updatedTitle);
+  await assertHelper.expectTheApiChallenge(testInfo.title);
 });

@@ -1,7 +1,10 @@
 import { test, expect } from "./base";
 import { todoGenerator } from "../utils/todo";
 
-test("GET /todos (200) ? filter", async ({ requestWithHeader }) => {
+test("07.GET /todos (200) ? filter", async ({
+  requestWithHeader,
+  assertHelper,
+}, testInfo) => {
   test.step("Create a 'done' todo", async () => {
     await requestWithHeader("post", "./todos", {
       data: todoGenerator.generateTodo(1),
@@ -14,4 +17,5 @@ test("GET /todos (200) ? filter", async ({ requestWithHeader }) => {
   });
   const response = await requestWithHeader("get", "./todos?doneStatus=true");
   await expect(response).toBeOK();
+  await assertHelper.expectTheApiChallenge(testInfo.title);
 });
