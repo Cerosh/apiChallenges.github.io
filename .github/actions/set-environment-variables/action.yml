@@ -12,8 +12,8 @@ runs:
     - name: Set BASE_URL
       shell: bash
       env:
-        API_CHALLENGES_LIVE: ${{ secrets.API_CHALLENGES_LIVE }}
-        API_CHALLENGES_TEST: ${{ secrets.API_CHALLENGES_TEST }}
+        API_CHALLENGES_LIVE: ${{ github.secrets.API_CHALLENGES_LIVE }}
+        API_CHALLENGES_TEST: ${{ github.secrets.API_CHALLENGES_TEST }}
       run: |
         if [ "${{inputs.environment}}" == "live" ]; then
           echo "API_BASE_URL=${API_CHALLENGES_LIVE}" >> $GITHUB_ENV
