@@ -23,7 +23,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Set Environment Variables
-        uses: ./.github/actions/set-environment-variables
+        uses: /.github/actions/set-environment-variables
         with:
           environment: ${{ github.event.inputs.environment }}
         env:
