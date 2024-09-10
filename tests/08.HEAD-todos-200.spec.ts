@@ -1,5 +1,5 @@
 import { expect, test } from "./base";
-test("08.HEAD /todos (200)", async ({ request, assertHelper }, testInfo) => {
+test("08.HEAD /todos (200)", async ({ request, page }, testInfo) => {
   const token = process.env.TOKEN;
   if (!token) {
     throw new Error("Token is not defined in the environment variables");
@@ -11,5 +11,5 @@ test("08.HEAD /todos (200)", async ({ request, assertHelper }, testInfo) => {
   });
 
   await expect(response).toBeOK();
-  await assertHelper.expectTheApiChallenge(testInfo.title);
+  await expect(page).toBeSuccessful(testInfo);
 });

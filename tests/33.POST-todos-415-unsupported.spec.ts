@@ -3,7 +3,7 @@ import { todoGenerator } from "../utils/todo";
 
 test("33.POST todos create with unsupported(415)", async ({
   requestWithHeader,
-  assertHelper,
+  page,
 }, testInfo) => {
   const response = await requestWithHeader("post", "./todos", {
     data: todoGenerator.generateTodo(),
@@ -14,5 +14,5 @@ test("33.POST todos create with unsupported(415)", async ({
   });
 
   expect(response.status()).toBe(415);
-  await assertHelper.expectTheApiChallenge(testInfo.title);
+  await expect(page).toBeSuccessful(testInfo);
 });

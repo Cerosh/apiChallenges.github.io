@@ -3,7 +3,7 @@ import { todoGenerator } from "../utils/todo";
 
 test("07.GET /todos (200) ? filter", async ({
   requestWithHeader,
-  assertHelper,
+  page,
 }, testInfo) => {
   test.step("Create a 'done' todo", async () => {
     await requestWithHeader("post", "./todos", {
@@ -17,5 +17,5 @@ test("07.GET /todos (200) ? filter", async ({
   });
   const response = await requestWithHeader("get", "./todos?doneStatus=true");
   await expect(response).toBeOK();
-  await assertHelper.expectTheApiChallenge(testInfo.title);
+  await expect(page).toBeSuccessful(testInfo);
 });

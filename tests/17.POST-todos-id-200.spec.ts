@@ -3,7 +3,7 @@ import { todoGenerator } from "../utils/todo";
 
 test("17.POST /todos/id (200)", async ({
   requestWithHeader,
-  assertHelper,
+  page,
 }, testInfo) => {
   const response = await requestWithHeader("post", "./todos", {
     data: todoGenerator.generateTodo(),
@@ -20,5 +20,5 @@ test("17.POST /todos/id (200)", async ({
   const { title: updatedTitleFromResponse } = updatedResponseJson;
   await expect(updatedResponse).toBeOK();
   expect(updatedTitleFromResponse).toBe(updatedTitle);
-  await assertHelper.expectTheApiChallenge(testInfo.title);
+  await expect(page).toBeSuccessful(testInfo);
 });

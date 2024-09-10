@@ -3,7 +3,7 @@ import { todoGenerator } from "../utils/todo";
 
 test("23.DELETE /todos/id (200)", async ({
   requestWithHeader,
-  assertHelper,
+  page,
 }, testInfo) => {
   const response = await requestWithHeader("post", "./todos", {
     data: todoGenerator.generateTodo(),
@@ -12,5 +12,5 @@ test("23.DELETE /todos/id (200)", async ({
   const { id } = todoResponse;
   const deletedResponse = await requestWithHeader("delete", `./todos/${id}`);
   await expect(deletedResponse).toBeOK();
-  await assertHelper.expectTheApiChallenge(testInfo.title);
+  await expect(page).toBeSuccessful(testInfo);
 });

@@ -1,10 +1,7 @@
 import { expect, test } from "./base";
 import { createBasicAuthHeader } from "../utils/auth";
 
-test("53.POST Amend(200)", async ({
-  requestWithHeader,
-  assertHelper,
-}, testInfo) => {
+test("53.POST Amend(200)", async ({ requestWithHeader, page }, testInfo) => {
   const authHeader = createBasicAuthHeader("admin");
   const response = await requestWithHeader("post", "./secret/token", {
     headers: {
@@ -22,5 +19,5 @@ test("53.POST Amend(200)", async ({
     },
   });
   expect(noteResponse).toBeOK();
-  await assertHelper.expectTheApiChallenge(testInfo.title);
+  await expect(page).toBeSuccessful(testInfo);
 });

@@ -1,19 +1,39 @@
 name: Playwright Tests
 on:
   push:
-    branches: [level.3]
+    branches: [level.4]
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Deployment environment"
+        type: choice
+        default: "live"
+        options:
+          - live
+          - test
 permissions:
   contents: read
   pages: write
   id-token: write
 jobs:
-  API_Challenges_Level_3:
+  setup:
     timeout-minutes: 60
     runs-on: ubuntu-latest
-    env:
-      ADMIN_USER_PASSWORD: ${{secrets.ADMIN_USER_PASSWORD}}
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Set Environment Variables
+        uses: ./.github/actions/set-environment-variables
+        with:
+          environment: ${{ github.event.inputs.environment }}
+        env:
+          ADMIN_USER_PASSWORD: ${{secrets.ADMIN_USER_PASSWORD}}
+  test:
+    runs-on: ubuntu-latest
+    needs: setup
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: lts/*
@@ -38,7 +58,7 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-      - name: Set URL
+      - name: Set GitHub Page URL
         id: set-url
         run: |
           REPO_OWNER=$(echo "${{github.repository}}" | cut -d'/' -f1)

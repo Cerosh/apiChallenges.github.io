@@ -2,7 +2,7 @@ import { expect, test } from "./base";
 test.describe("POST Unauthorised", () => {
   test("54.remove the X-AUTH-TOKEN header", async ({
     requestWithHeader,
-    assertHelper,
+    page,
   }, testInfo) => {
     const noteResponse = await requestWithHeader("post", "./secret/note", {
       data: {
@@ -10,11 +10,11 @@ test.describe("POST Unauthorised", () => {
       },
     });
     expect(noteResponse.status()).toBe(401);
-    await assertHelper.expectTheApiChallenge(testInfo.title);
+    await expect(page).toBeSuccessful(testInfo);
   });
   test("55.Invalid AUTH TOKEN header", async ({
     requestWithHeader,
-    assertHelper,
+    page,
   }, testInfo) => {
     const noteResponse = await requestWithHeader("post", "./secret/note", {
       headers: {
@@ -25,6 +25,6 @@ test.describe("POST Unauthorised", () => {
       },
     });
     expect(noteResponse.status()).toBe(403);
-    await assertHelper.expectTheApiChallenge(testInfo.title);
+    await expect(page).toBeSuccessful(testInfo);
   });
 });

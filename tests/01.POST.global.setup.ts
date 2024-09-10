@@ -1,9 +1,9 @@
-import { test as setup, TestInfo } from "./base";
+import { test as setup, expect, TestInfo } from "./base";
 import config from "../playwright.config";
 
 setup(
   "01.Fetch X-CHALLENGER token",
-  async ({ request, assertHelper }, testInfo: TestInfo) => {
+  async ({ request, page }, testInfo: TestInfo) => {
     const baseURL = config.use?.baseURL;
     const response = await request.post(`${baseURL}/challenger`);
     if (!response.ok()) {
@@ -12,6 +12,6 @@ setup(
     const token = response.headers()["x-challenger"];
     process.env.TOKEN = token;
 
-    await assertHelper.expectTheApiChallenge(testInfo.title);
+    await expect(page).toBeSuccessful(testInfo);
   }
 );

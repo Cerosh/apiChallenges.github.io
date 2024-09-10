@@ -3,7 +3,7 @@ import { createBasicAuthHeader } from "../utils/auth";
 
 test("56.GET Authorized (Bearer)", async ({
   requestWithHeader,
-  assertHelper,
+  page,
 }, testInfo) => {
   const authHeader = createBasicAuthHeader("admin");
   const response = await requestWithHeader("post", "./secret/token", {
@@ -19,5 +19,5 @@ test("56.GET Authorized (Bearer)", async ({
     },
   });
   expect(noteResponse).toBeOK();
-  await assertHelper.expectTheApiChallenge(testInfo.title);
+  await expect(page).toBeSuccessful(testInfo);
 });

@@ -2,7 +2,7 @@ import { expect, test } from "./base";
 
 test("50.GET Forbidden (403)", async ({
   requestWithHeader,
-  assertHelper,
+  page,
 }, testInfo) => {
   const response = await requestWithHeader("get", "./secret/note", {
     headers: {
@@ -10,5 +10,5 @@ test("50.GET Forbidden (403)", async ({
     },
   });
   expect(response.status()).toBe(403);
-  await assertHelper.expectTheApiChallenge(testInfo.title);
+  await expect(page).toBeSuccessful(testInfo);
 });

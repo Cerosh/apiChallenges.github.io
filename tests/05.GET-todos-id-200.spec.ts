@@ -11,7 +11,7 @@ interface TodosResponse {
 }
 test("05.GET /todos/{id} (200)", async ({
   requestWithHeader,
-  assertHelper,
+  page,
 }, testInfo) => {
   const response = await requestWithHeader("get", "./todos");
   const data: TodosResponse = await response.json();
@@ -25,5 +25,5 @@ test("05.GET /todos/{id} (200)", async ({
     `./todos/${todos[randomIndex].id}`
   );
   await expect(todoResponse).toBeOK();
-  await assertHelper.expectTheApiChallenge(testInfo.title);
+  await expect(page).toBeSuccessful(testInfo);
 });

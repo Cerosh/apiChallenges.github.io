@@ -3,7 +3,7 @@ import { todoGenerator } from "../utils/todo";
 
 test("31.POST todos create with XML(201)", async ({
   requestWithHeader,
-  assertHelper,
+  page,
 }, testInfo) => {
   const response = await requestWithHeader("post", "./todos", {
     data: todoGenerator.generateTodoXML(),
@@ -16,5 +16,5 @@ test("31.POST todos create with XML(201)", async ({
   const headers = response.headers();
   await expect(response).toBeOK();
   expect(headers["content-type"]).toContain("application/xml");
-  await assertHelper.expectTheApiChallenge(testInfo.title);
+  await expect(page).toBeSuccessful(testInfo);
 });

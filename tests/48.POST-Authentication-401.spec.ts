@@ -3,7 +3,7 @@ import { createBasicAuthHeader } from "../utils/auth";
 
 test("48.POST Authentication (401)", async ({
   requestWithHeader,
-  assertHelper,
+  page,
 }, testInfo) => {
   const authHeader = createBasicAuthHeader("Admin1");
   const response = await requestWithHeader("post", "./secret/token", {
@@ -12,5 +12,5 @@ test("48.POST Authentication (401)", async ({
     },
   });
   expect(response.status()).toBe(401);
-  await assertHelper.expectTheApiChallenge(testInfo.title);
+  await expect(page).toBeSuccessful(testInfo);
 });
