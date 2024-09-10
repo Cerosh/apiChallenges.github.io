@@ -13,9 +13,9 @@ runs:
       shell: bash
       run: |
         if [ "${{inputs.environment}}" == "live" ]; then
-          echo "API_BASE_URL=${{vars.API_CHALLENGES_LIVE}}" >> $GITHUB_ENV
+          echo `API_BASE_URL=${{vars.API_CHALLENGES_LIVE}}` >> $GITHUB_ENV
         elif [ "${{inputs.environment}}" == "test" ]; then
-          echo "API_BASE_URL=${{vars.API_CHALLENGES_TEST}}" >> $GITHUB_ENV
+          echo `API_BASE_URL=${{vars.API_CHALLENGES_TEST}}` >> $GITHUB_ENV
         else
           echo "Error: Unknown environment '${{inputs.environment}}'. Please use 'live' or 'test'." >&2
           exit 1
