@@ -15,11 +15,12 @@ runs:
         API_CHALLENGES_LIVE: ${{ github.secrets.API_CHALLENGES_LIVE }}
         API_CHALLENGES_TEST: ${{ github.secrets.API_CHALLENGES_TEST }}
       run: |
+        echo "github.event.inputs.environment: ${github.event.inputs.environment}"
         if [ "${{ github.event.inputs.environment }}" == "live" ]; then
           echo "API_BASE_URL=${API_CHALLENGES_LIVE}" >> $GITHUB_ENV
         elif [ "${{ github.event.inputs.environment }}" == "test" ]; then
           echo "API_BASE_URL=${API_CHALLENGES_TEST}" >> $GITHUB_ENV
         else
-          echo "Error: Unknown environment '${{ github.eventinputs.environment }}'. Please use 'live' or 'test'." >&2
+          echo "Error: Unknown environment '${{ github.event.inputs.environment }}'. Please use 'live' or 'test'." >&2
           exit 1
         fi
