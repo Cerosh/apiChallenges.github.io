@@ -8,10 +8,10 @@ on:
         description: "Select the environment to execute test"
         required: true
         type: choice
-        default: "live"
+        default: "LIVE"
         options:
-          - live
-          - test
+          - LIVE
+          - TEST
 permissions:
   contents: read
   pages: write
