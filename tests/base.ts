@@ -1,11 +1,12 @@
 import {
   test as base,
   expect as baseExpect,
+  Locator,
   Page,
   TestInfo,
 } from "@playwright/test";
 import { requestWithHeader } from "../utils/request.helper";
-
+import { takeScreenshot } from "../utils/screenshot.helper";
 import { getLocatorBasedOnTitle } from "../utils/assert.helper";
 
 const test = base.extend<{
@@ -24,18 +25,15 @@ const test = base.extend<{
 export const expect = baseExpect.extend({
   async toBeSuccessful(page: Page, testInfo: TestInfo) {
     let pass: boolean;
-    const title = testInfo.title;
-
+    const title: string = testInfo.title;
+    let locator: Locator | null = null;
     try {
-      const locator = await getLocatorBasedOnTitle(page, title);
+      locator = await getLocatorBasedOnTitle(page, title);
       await expect(locator, title).toHaveCSS(
         "background-color",
         "rgb(152, 251, 152)"
       );
-      await testInfo.attach("screenshot", {
-        body: await locator.screenshot(),
-        contentType: "image/png",
-      });
+
       pass = true;
       return {
         message: () =>
@@ -45,6 +43,7 @@ export const expect = baseExpect.extend({
         pass,
       };
     } catch (error) {
+      await takeScreenshot(locator, page, testInfo);
       return {
         message: () => `${error.message} for the test case: "${title}".`,
         pass: false,
