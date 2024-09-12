@@ -1,12 +1,8 @@
 # Playwright API Testing Hub
 **Features**
--
--
-- 
-  
-**Limitations**
-- jjkjk
-- 
+- Workflow Dispatch: Test execution can now be triggered based on user input through the workflow_dispatch feature of GitHub Actions, providing greater flexibility and control over test runs.
+- Screen Captures: Upon test failure, screen captures of the relevant UI elements are automatically taken, aiding in identifying and debugging issues.
+- Custom Assertions: The framework has been modified to include custom assertions, enhance API and UI testing integration, and provide more precise validation.
 
 <table>
   <tr>
