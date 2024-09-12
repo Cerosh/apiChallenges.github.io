@@ -1,8 +1,9 @@
 # Playwright API Testing Hub
 **Features**
--
--
-- 
+- Credential Management: Hardcoded credentials have been replaced with GitHub Secrets, ensuring sensitive information is securely stored and managed.
+- Helper Methods: Helper methods have been implemented to streamline credential management, making it easier to update and manage credentials across the framework.
+- Environment Variables: Hardcoded URLs have been moved to GitHub environment variables, allowing for easy configuration and customization of test environments without modifying the script directly.
+- Workflow Integration: The GitHub Action workflow has been modified to accept credentials and URL from GitHub environment variables, providing greater flexibility and control over test execution.
   
 **Limitations**
 - jjkjk
