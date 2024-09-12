@@ -14,6 +14,8 @@
     <td><a href="https://github.com/Cerosh/apiChallenges.github.io/tree/main">Main</a></td>
     <td>Level 1</a></td>
     <td><a href="https://github.com/Cerosh/apiChallenges.github.io/tree/level.2">Level 2</a></td>
+    <td><a href="https://github.com/Cerosh/apiChallenges.github.io/tree/level.3">Level 3</a></td>
+    <td><a href="https://github.com/Cerosh/apiChallenges.github.io/tree/level.4">Level 4</a></td>
   </tr>
 </table>
 
