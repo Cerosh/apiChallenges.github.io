@@ -5,8 +5,7 @@
 - GitHub Pages Publishing: Test reports are now automatically published to GitHub Pages, providing a centralized and accessible location for viewing and sharing test results.
   
 **Limitations**
-- jjkjk
-- 
+- Since UI tests are now integrated with API, capturing a screenshot of failures will be an excellent way to review failures.
 
 <table>
   <tr>
