@@ -1,8 +1,8 @@
 # Playwright API Testing Hub
 **Features**
--
--
-- 
+- Playwright Fixtures: API tests are now integrated with UI testing using Playwright fixtures, allowing for seamless synchronization and validation between API calls and UI interactions.
+- TestInfo Feature: The testInfo feature captures detailed information about each API test, including request and response details, making it easier to analyze test results and identify issues.
+- GitHub Pages Publishing: Test reports are now automatically published to GitHub Pages, providing a centralized and accessible location for viewing and sharing test results.
   
 **Limitations**
 - jjkjk
