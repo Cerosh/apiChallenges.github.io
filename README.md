@@ -6,9 +6,7 @@
 - Workflow Integration: The GitHub Action workflow has been modified to accept credentials and URL from GitHub environment variables, providing greater flexibility and control over test execution.
   
 **Limitations**
-- jjkjk
-- 
-
+- The current test report-sharing process could be more efficient due to manual file transfer, leading to potential delays, errors, and difficulty in managing versions.
 <table>
   <tr>
     <td><a href="https://github.com/Cerosh/apiChallenges.github.io/tree/main">Main</a></td>
