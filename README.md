@@ -8,6 +8,7 @@
 **Limitations**<br>
 - Credentials: The test scripts hardcode authentication credentials, posing a security risk and reducing flexibility.
 - URLs: Endpoints and URLs are hardcoded, making the framework less adaptable to changes in the API environment or testing different environments.
+- The current test report-sharing process could be more efficient due to manual file transfer, leading to potential delays, errors, and difficulty in managing versions.
 
 <table>
   <tr>
